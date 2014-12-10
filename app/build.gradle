@@ -5,11 +5,10 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.14.1'
-        classpath 'org.robolectric:robolectric-gradle-plugin:0.14.0-SNAPSHOT'
+        classpath 'com.github.jcandksolutions.gradle:android-unit-test:2.0.2'
     }
 }
 apply plugin: 'com.android.application'
-apply plugin: 'robolectric'
 
 repositories {
         jcenter()
@@ -39,11 +38,11 @@ android {
     }
 }
 
+apply plugin: 'android-unit-test'
+
 dependencies {
-    androidTestCompile('junit:junit:4.11') {
-        exclude module: 'hamcrest-core'
-    }
-    androidTestCompile 'org.robolectric:robolectric:2.3'
+    testCompile('junit:junit:4.11')
+    testCompile 'org.robolectric:robolectric:2.4'
 }
 
 apply plugin: 'idea'
